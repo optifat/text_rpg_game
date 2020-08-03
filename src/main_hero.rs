@@ -2,8 +2,12 @@ use std::io;
 
 pub struct MainHero {
     name: String,
+    level: u8,
+    experience: u16,
     intelligence: u8,
-    charisma: u8
+    charisma: u8,
+    health: i16,
+    tiredness: i16
 }
 
 impl MainHero{
@@ -16,8 +20,6 @@ impl MainHero{
         let skill_points = 10;
         loop {
             let mut name = String::new();
-            let mut intelligence: u8;
-            let mut charisma: u8;
             let mut skill_points_left = skill_points;
 
             println!("Input your name");
@@ -53,14 +55,27 @@ impl MainHero{
             skill_points_left -= charisma;
 
             if skill_points_left == 0{
-                return MainHero{name, intelligence, charisma}
+                return MainHero{name, intelligence, charisma,
+                                health: (100), tiredness: (0),
+                                level: (1), experience: (0)
+                            }
             } else{
                 println!("You have {} skill points left", skill_points_left);
             }
         }
     }
 
-    pub fn get_name(self) -> String{
-        self.name
+    pub fn get_name(&mut self) -> String{
+        self.name.clone()
+    }
+
+    pub fn gain_experience(&mut self, experience: u16){
+        println!("You gained {} experience", experience);
+        self.experience += experience;
+        if experience >= 1000{
+            self.level += 1;
+            self.experience -= 1000;
+            println!("Level up! New level is {}!", self.level);
+        }
     }
 }
