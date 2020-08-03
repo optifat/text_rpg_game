@@ -1,5 +1,7 @@
 use std::io;
 
+use crate::npc::NPC;
+
 pub struct MainHero {
     name: String,
     level: u8,
@@ -65,7 +67,7 @@ impl MainHero{
         }
     }
 
-    pub fn get_name(&mut self) -> String{
+    pub fn get_name(&self) -> String{
         self.name.clone()
     }
 
@@ -77,5 +79,9 @@ impl MainHero{
             self.experience -= 1000;
             println!("Level up! New level is {}!", self.level);
         }
+    }
+
+    pub fn interact_with_NPC(&mut self, npc: crate::npc::NPC){
+        println!("I'm {} and this is my favorite store on the Citadel", npc.get_name());
     }
 }
