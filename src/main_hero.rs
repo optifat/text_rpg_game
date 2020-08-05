@@ -1,6 +1,6 @@
 use std::io;
 
-use crate::npc::NPC;
+use crate::npc;
 
 pub struct MainHero {
     name: String,
@@ -13,10 +13,6 @@ pub struct MainHero {
 }
 
 impl MainHero{
-
-    //pub fn create_main_hero(name: String, intelligence: u8, charisma: u8)-> MainHero{
-    //    MainHero{name, intelligence, charisma}
-    //}
 
     pub fn create_main_hero()-> MainHero{
         let skill_points = 10;

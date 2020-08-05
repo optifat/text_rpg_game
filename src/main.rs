@@ -1,5 +1,7 @@
 mod main_hero;
 mod npc;
+mod location;
+mod spacecraft;
 
 fn main() {
     let mut main_hero = main_hero::MainHero::create_main_hero();
